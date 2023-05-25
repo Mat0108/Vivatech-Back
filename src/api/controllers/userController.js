@@ -17,13 +17,26 @@ exports.userRegister = (req, res) => {
             }
             else{
                 db("user")
-                    .insert({id: uuid(), email: newUser.email, password: hash})
-                    .then(data => res.status(200).json({message: `Utilisateur crée : ${newUser.email}`}))
-                    .catch(error => {
-                        res.status(401);
-                        console.log(error);
-                        res.json({message: "Rêquete invalide"});
-                    });
+                    .select("*")
+                    .where("email", newUser.email)
+                    .then((user) => {
+                        console.log(user)
+                        if(user) {
+                            res.status(401);
+                            res.json({message: "Utilisateur est déjà existant"});
+                        }
+                        else {
+                             db("user")
+                            .insert({id: uuid(), email: newUser.email, password: hash})
+                            .then(data => res.status(200).json({message: `Utilisateur crée : ${newUser.email}`}))
+                            .catch(error => {
+                                res.status(401);
+                                console.log(error);
+                                res.json({message: "Rêquete invalide"});
+                            });
+                        }
+                    })
+               
             }
         })
     }
