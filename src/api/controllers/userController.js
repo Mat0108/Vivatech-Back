@@ -111,3 +111,15 @@ exports.addUserQrCode = (req, res, error) => {
             res.json({message: "Utilisateur non trouvé"});
         });
 }
+
+// Show list of users
+exports.listAllUsers = (req, res) => {
+    db("user")
+    .select("*")
+    .then(data => res.status(200).json({data}))
+    .catch(error => {
+        res.status(401);
+        console.log(error);
+        res.json({message: "Erreur serveur"});
+    });   
+}
