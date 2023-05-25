@@ -16,14 +16,25 @@ exports.userRegister = (req, res) => {
                 res.json({message: "Impossible de crypter le mot de passe"});
             }
             else{
-                db("user")
-                    .insert({id: uuid(), email: newUser.email, password: hash})
-                    .then(data => res.status(200).json({message: `Utilisateur crée : ${newUser.email}`}))
-                    .catch(error => {
-                        res.status(401);
-                        console.log(error);
-                        res.json({message: "Rêquete invalide"});
-                    });
+                db.select("*")
+                    .from("user")
+                    .where("email", "=", newUser.email)
+                    .then((user) => {
+                        if(user.length > 0) {
+                            res.status(401);
+                            res.json({message: "Utilisateur est déjà existant"});
+                        }
+                        else {
+                             db("user")
+                                .insert({id: uuid(), email: newUser.email, password: hash})
+                                .then(data => res.status(200).json({message: `Utilisateur crée : ${newUser.email}`}))
+                                .catch(error => {
+                                    res.status(401);
+                                    console.log(error);
+                                    res.json({message: "Rêquete invalide"});
+                                });
+                        }
+                    })
             }
         })
     }
@@ -110,4 +121,16 @@ exports.addUserQrCode = (req, res, error) => {
             console.log(error);
             res.json({message: "Utilisateur non trouvé"});
         });
+}
+
+// Show list of users
+exports.listAllUsers = (req, res) => {
+    db("user")
+    .select("*")
+    .then(data => res.status(200).json({data}))
+    .catch(error => {
+        res.status(401);
+        console.log(error);
+        res.json({message: "Erreur serveur"});
+    });   
 }
