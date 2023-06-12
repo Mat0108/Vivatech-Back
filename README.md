@@ -16,23 +16,23 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 3. Installez les dépendances : npm install
 4. Configuration de la base de données :
 
-- Créez une base de données MySQL.
-- Copiez le fichier `.env.example` et renommez-le en `.env`.
-- Dans le fichier `.env`, configurez les informations de connexion à votre base de données :
+  - Créez une base de données MySQL.
+  - Copiez le fichier `.env.example` et renommez-le en `.env`.
+  - Dans le fichier `.env`, configurez les informations de connexion à votre base de données :
 
-  ```
-  NODE_ENV=development
-  
-  MYSQL_HOST=vivatech_back_db
-  MYSQL_ROOT_PASSWORD=vivatech
-  MYSQL_DATABASE=vivatech
-  MYSQL_USER=vivatech_back
-  MYSQL_PASSWORD=vivatech
-  MYSQL_PORT=3306
-  
-  JWT_KEY=secretkey
-  
-  ```
+    ```
+    NODE_ENV=development
+
+    MYSQL_HOST=vivatech_back_db
+    MYSQL_ROOT_PASSWORD=vivatech
+    MYSQL_DATABASE=vivatech
+    MYSQL_USER=vivatech_back
+    MYSQL_PASSWORD=vivatech
+    MYSQL_PORT=3306
+
+    JWT_KEY=secretkey
+
+    ```
   
 ## Accédez à l'application à les adresses suivantes :
 
