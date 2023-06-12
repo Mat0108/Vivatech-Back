@@ -1,6 +1,6 @@
 # VivaTech Back
 
-[Description du projet]
+Ce projet est une application back-end développée en Node.js avec une base de données MySQL. Il complète le projet VivaTech-Front. L'application nous permet de récupérer et stocker des données récoltés sur les pages CV, Pass, QRCode, ainsi qu'utilisateur de VivaTechFront.
 
 ## Prérequis
 
