@@ -36,7 +36,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   
 ## Accédez à l'application à les adresses suivantes :
 
-- Mise en production : 
+### Mise en production : 
 
   ### Utilisateur
 
@@ -74,7 +74,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   - https://viva.pari0200.mds-paris.yt/cv 
 
 
-- En local : 
+### En local : 
 
   ### Utilisateur
 
